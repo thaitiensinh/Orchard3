@@ -1,0 +1,338 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryViewVM
+@using Orchard.Media.Extensions;
+@using Orchard.Media.Helpers;
+@using Orchard.Media.Models;
+@using CaptchaMvc.HtmlHelpers;
+@{ 
+    var WhyImp = new HtmlString(Model.WhyImp.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    var Advance = new HtmlString(Model.Advance.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    var Solve = new HtmlString(Model.Solve.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>")); 
+}
+@using (Html.BeginForm("ViewStory", "Story", FormMethod.Post))
+{
+    <div id="maincontainer">
+        <main>
+      <div id="detailstory">
+        <table style="width:650px">
+            <colgroup>
+                <col width="44px" />
+                <col width="386px" />
+                <col width="180px" />
+            </colgroup>
+            <tr>
+            <td colspan='3'><img src="@Model.PublicUrl"  alt="@Model.StoryName" style="max-width:556px; max-height:313px" /></td>
+            </tr>
+            <tr>
+                <td colspan='3'style="color: #0000FF;vertical-align:top"><img src="../../../Modules/VIC_Story/Styles/images/icon_like.png"/>192 people like this. Be this first of your friend</td>
+            </tr>
+            <tr>
+                <td colspan='3'style="color:#99CC00; font-size:25px;">@Model.StoryName</td>
+                </tr>
+            <tr>
+                <td rowspan='3' ><a href="~/"><img src= "@Model.PublicUrl_Avatar" alt="@Model.StoryName" style="width: 44px; height: 44px" /></a></td>
+                <td colspan='2' style="font-size:13px;">
+                    @T("Viết bởi"):
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'style="font-size:15px;">
+                @foreach (var entry1 in Model.eListAllUser)
+                {
+                    if (entry1.UserPart_Id == @Model.ID_User)
+                    {
+                            @Html.ActionLink(entry1.FirstName + " " + entry1.LastName, "ViewUser", new { Controller = "Account", Area = "VIC.User", id = entry1.Id })        
+                    }
+                }      
+                    </td>
+            </tr>
+             <tr>
+                <td colspan='2'style="font-size:13px;">
+                @foreach (var entry1 in Model.eListAllUser)
+                {
+                    if (@entry1.UserPart_Id == @Model.ID_User)
+                    {
+                        @entry1.Address
+                    }
+                } 
+</td>
+            </tr>
+            <tr>
+                <td colspan='3'><hr /> </td>
+            </tr>
+             <tr>
+                <td rowspan='3' colspan='2'Style="font-size:18px;padding-right: 80px;"> @Model.Description</td>
+                <td style="font-size:16px"><img src="../../../Modules/VIC_Story/Styles/images/icon_date.png" />Bắt đầu: @Model.StartDate.Value.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td style="font-size:16px"><img src="../../../Modules/VIC_Story/Styles/images/icon_gio.png" />Kết thúc: @Model.EndDate.Value.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td style="font-size:16px"><img src="../../../Modules/VIC_Story/Styles/images/icon_address.png" /> @Model.sArea</td>
+            </tr>
+            <tr>
+                <td colspan='3'><hr /> </td>
+            </tr>
+            <tr>
+                <td colspan='3'style="padding-right: 50px;">
+                <p>@WhyImp</p>
+                <br />
+                <p>@Solve</p>
+                <br />
+                <p>@Advance</p>
+                <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan='3'style="font-size:20px; padding-top:30px">Cập nhật câu chuyện</td>
+            </tr>
+            <tr>
+                <td colspan='3'>
+                @Html.Partial("UpdateStoryPartial")
+                </td>
+            </tr>
+            <tr>
+                <td colspan='3' style="font-size:20px; padding-top:30px">Lý do tôi quan tâm</td>
+            </tr>
+            <tr>
+                <td colspan='3'>
+                
+                    @if (!Model.IsUser)
+                    {
+                       @T("Họ và tên :")
+                       <div class="editor-field">
+                        @Html.TextBoxFor(model => model.NameAnynomous)
+                        </div>
+    <br />
+                    @T("Email :")
+                    <div class="editor-field">
+                    @Html.TextBoxFor(model => model.EmailAnynomous)
+                    </div>
+                    }
+                    else
+                    {
+                        <p>@T("Email :") @Model.EmailUser</p>
+                        <p>@T("User :") @Model.NameUser</p>
+                    }
+                    @Html.HiddenFor(model => model.IsUser)
+                    <div class="editor-label">
+                    Nội dung bình luận:
+                    </div>
+                    @Html.TextAreaFor(model => model.ContentComment, new { style = "width: 570px;height: 112px; margin: 0px 0px 0px;" })
+                    <table>
+                    <colgroup>
+                    <col width="450px" style="float: left" />
+                    <col width="110px" style="float: right" />
+                    </colgroup>
+                    <tr>
+                    <td>
+                    @Html.Partial("CaptchPartialView")
+                    </td>
+                    <td style="vertical-align: top">
+                    <button class="primaryAction" type="submit" name="submit.Binhluan" value="Binhluan" style="margin-right: 10px">@T("Đăng bình luận")</button>
+                    </td>
+                    </tr>
+                    </table>
+                     @Html.AntiForgeryTokenOrchard()
+                   
+                    @Html.Partial("CommentStoryPartial")
+                     
+                </td>
+            </tr>
+            
+        </table>
+        </div>
+        <div id="care" style="float:right">
+            <table style="width:220px; height: 250px; background-color: #FFFFFF; color: #808080;margin:10px">
+                 <colgroup>
+                    <col width="100px" />
+                    <col width="100px" />
+                 </colgroup>
+                 <tr>   
+                    <td style="font-size: 25px;color:#99CC00;padding: 50px 30px 0px 9px;"><img src="../../../Modules/VIC_Story/Styles/images/icon_tim.png" />@Model.AmountCare</td>
+                    <td style="font-size: 25px;color:#FF0000;padding: 50px 30px 0px 9px;"><img src="../../../Modules/VIC_Story/Styles/images/icon_sao.png" /><span id="ax2">@Html.ActionLink("20", " ", " ")</span></td>
+                 </tr>
+                 <tr>
+                    <td style="color:#99CC00;text-align: center;">người quan tâm</td>
+                    <td style="color:#FF0000;text-align: center;">người hành động</td>
+                 </tr>
+                  <tr>
+                    <td colspan='2'><input type="text" class="txtpassword1" placeholder="Họ và Tên" style="font-size:13px; margin: 0px 20px;"/></td>
+                  </tr>
+                   <tr>
+                    <td colspan='2'><input type="text" class="txtpassword1" placeholder="Email" style="font-size:13px; margin: 0px 20px;"/></td>
+                  </tr>
+                 <tr>
+                    <td colspan='2'><textarea placeholder="Vì sao tôi quan tâm câu chuyện này? (Tùy chọn)"></textarea></td> 
+                 </tr>
+            </table>
+            <button style="width: 170px;margin: 0px 50px 5px;">Quan tâm</button> 
+           <button style="padding-left: 40px; padding-right:40px; margin:0px 50px 5px;" name="button" value="" class="btnSubmit">Hành động</button>
+           @*<input type="checkbox" name="remember" value="remember" style="margin: 30px 0px 0px 30px;"/> Share with Facebook with friend*@
+        </div>
+    </main>
+    </div>
+   
+}
+@*<div class="sections clearBoth">
+    <div class="primary">
+        <div>
+            <img src="@Model.PublicUrl" class="previewImage" alt=""/>
+        </div>
+    </div>
+</div>*@ @*@{ 
+    var WhyImp = new HtmlString(Model.WhyImp.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    var Advance = new HtmlString(Model.Advance.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    var Solve = new HtmlString(Model.Solve.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>")); 
+}
+@T("Story by"):
+@foreach (var entry1 in Model.eListAllUser)
+{
+    if (@entry1.UserPart_Id == @Model.ID_User)
+    {
+    <p>
+        <b>@entry1.FirstName @T(" ") @entry1.LastName </b></p>
+    }
+}
+<br />
+@T("Publish on"): @Model.PublishDate
+<br />
+@T("Amount care"): @Model.AmountCare
+<br />
+@using (Html.BeginFormAntiForgeryPost())
+{ 
+    if(!@Model.IsCare)
+    {
+         <button class="primaryAction" type="submit" name="submit.Quantam" value="Quantam" onclick="setCookie(@Model.ID_Story,@Model.StoryName,365)">@T("Quan tam")</button>
+    }else
+    {
+        <button type="button" value="disabled" disabled="disabled">@T("Quan tam")</button>
+    }
+}
+@T("StoryName"):
+<p>@Model.StoryName</p>
+<br />
+@T("Concern"):
+<p>@Model.sConcern</p>
+<br />
+@T("Description"):
+<p>@Model.Description</p>
+<br />
+@T("Area"):
+<p>@Model.sArea</p>
+<br />
+@T("StartDate"):
+<p>@Model.StartDate.Value.ToShortDateString()</p>
+<br />
+@T("EndDate"):
+<p>@Model.EndDate.Value.ToShortDateString()</p>
+<br />
+@T("WhyImp"):
+<p>@WhyImp</p>
+<br />
+@T("Solve"):
+<p>@Solve</p>
+<br />
+@T("Advance"):
+<p>@Advance</p>
+<br />
+@foreach (var entry in Model.eUpdateStorys)
+{
+
+    var Content = new HtmlString(entry.Content.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    <div>@T("New Update: ") : @entry.Title<br />
+    </div>
+    <div>@T("Date: ")@entry.Date.Value.ToShortDateString()</div>
+    <div>@T("Content: ")@Content</div>
+}
+@using (Html.BeginFormAntiForgeryPost())
+{ 
+    
+    <legend>Binh luan cau chuyen</legend> 
+    <fieldset>
+        @if (!Model.IsUser)
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NameAnynomous)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NameAnynomous)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EmailAnynomous)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.EmailAnynomous)
+            </div>
+        }
+        else
+        {
+            <p>@T("Email :") @Model.EmailUser</p>
+            <p>@T("User :") @Model.NameUser</p>    
+        }
+        @Html.HiddenFor(model => model.IsUser)
+        <div class="editor-label">
+            Nội dung bình luận:
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.ContentComment, new { style = "width: 700px; height: 200px" })
+        </div>
+        @Html.Partial("CaptchPartialView")
+        <button class="primaryAction" type="submit" name="submit.Binhluan" value="Binhluan">@T("Đăng bình luận")</button>
+        @Html.AntiForgeryTokenOrchard()
+    </fieldset>
+}
+@foreach (var entry in Model.eCommentStory)
+{
+    <hr />
+    
+    foreach (var entry1 in Model.eListUser)
+    {
+        if (entry1.UserPart_Id == entry.ID_User)
+        {
+    <p>@entry1.Email</p>
+    <p>@entry1.FirstName @T(" ") @entry1.LastName</p>
+            break;
+        }
+    }
+    @entry.NameAnonymous <br />@entry.EmailAnonymous
+    var Content = new HtmlString(entry.Content.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    <div>@T("Date: ")@entry.Date</div>
+    <div>@T("Content: ")@Content</div>
+    <hr />
+}
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+        function getCookie(c_name) {
+            var i, x, y, ARRcookies = document.cookie.split(";");
+            for (i = 0; i < ARRcookies.length; i++) {
+                x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+                y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+                x = x.replace(/^\s+|\s+$/g, "");
+                if (x == c_name) {
+                    return unescape(y);
+                }
+            }
+        }
+
+        function setCookie(c_name, value, exdays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + exdays);
+            var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+            document.cookie = c_name + "=" + c_value;
+        }
+
+        function checkCookie() {
+            var username = getCookie("username");
+            if (username != null && username != "") {
+                alert("Welcome again " + username);
+            }
+            else {
+                username = prompt("Please enter your name:", "");
+                if (username != null && username != "") {
+                    setCookie("username", username, 365);
+                }
+            }
+        }
+    </script>
+}*@

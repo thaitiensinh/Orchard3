@@ -1,0 +1,121 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryEditVM
+@using Orchard.Media.Extensions;
+@using Orchard.Media.Helpers;
+@using Orchard.Media.Models;
+@Html.ValidationSummary(T("Edit Story creation was unsuccessful. Please correct the errors and try again.").ToString())
+@using (Html.BeginForm("EditStory", "Story", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <legend>Chỉnh sửa câu chuyện </legend> 
+    <div class="sections clearBoth">
+        <div class="primary">
+            <div>
+                <img src="@Model.PublicUrl" class="previewImage"/>
+            </div>
+        </div>
+    </div>
+    <label for="pageTitle">@T("Đường dẫn tập tin")</label>
+    <input id="MediaItemPath" name="MediaItemPath" type="file" value="@T("Browse")" size="64"/>
+    <span class="hint">@T("Bạn có thể upload file hình với đuôi mở rộng: .jpg, .gif, .bmp.")</span>
+    <input type="hidden" id="FolderName" name="FolderName" value= @Model.FolderName />
+    <input type="hidden" id="MediaPath" name="MediaPath" value= @Model.MediaPath />
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StoryName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.StoryName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Concern)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Concern")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextArea("Description", @Model.Description, new { style = "width: 700px; height: 200px" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Area)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Area")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("StartDate", @Model.StartDate.Value.ToShortDateString(), new { id = "StartDate" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("EndDate", @Model.EndDate.Value.ToShortDateString(), new { id = "EndDate" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WhyImp)
+        </div>
+        <div class="editor-field">
+            @Html.TextArea("WhyImp", @Model.WhyImp, new { @class = "html tinymce" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Solve)
+        </div>
+        <div class="editor-field">
+            @Html.TextArea("Solve", (string)Model.Solve, new { @class = "html tinymce" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Advance)
+        </div>
+        <div class="editor-field">
+            @Html.TextArea("Advance", @Model.Advance, new { @class = "html tinymce" })
+            <div>
+                <button class="primaryAction" type="submit" id="btn">@T("Lưu thay đổi")</button>
+            </div>
+            @Html.AntiForgeryTokenOrchard()
+        </div>
+    </fieldset>
+}
+@using (Script.Foot())
+{
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>    
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery.ui.datepicker.min.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery.ui.datepicker-vi.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery-ui-1.9.1.custom.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/TinyMce/Scripts/tiny_mce_src.js" type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/TinyMce/Scripts/orchard-tinymce.js" type="text/javascript"></script>
+    <link href="/OrchardLocal/Modules/Orchard.jQuery/Styles/jquery-ui.css" rel="stylesheet"
+        type="text/css" />
+
+    <script type="text/javascript">
+        $(function () {
+            $("#StartDate").datepicker($.datepicker.regional['vi']);
+            $("#EndDate").datepicker($.datepicker.regional['vi']);
+        });
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+    $(function () {
+        $('#MediaItemPath').change(function () {
+            var $in = $(this);
+            var allowedExtensions = ' @Model.AllowedExtensions ';
+            var filename = $in.val();
+          var ext = filename.slice(filename.lastIndexOf(".")).toLowerCase();
+            var allowed = allowedExtensions == '  ' || allowedExtensions.indexOf(ext) != -1;
+
+            if(!allowed) {
+                $('#messages>div').append($('<div class="message message-Error">@T("Can't upload file. Supported file types are {0}.", Model.AllowedExtensions).Text</div>'));
+                return false;
+            }
+        });
+    })
+//]]>
+    </script>
+    
+}

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D91EC49A-9108-4D7A-A00C-0E0CE7542D5B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIC_Story</RootNamespace>
+    <AssemblyName>VIC_Story</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Soft\Mvc 4\Mvc 4\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Helpers.Mvc.2.0.20710.0\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\ConcernStory.js" />
+    <Content Include="Scripts\GetCountry.js" />
+    <Content Include="Scripts\jquery-1.7.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.9.1.custom.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-vi.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Styles\images\150x180.jpg" />
+    <Content Include="Styles\images\44x44.jpg" />
+    <Content Include="Styles\images\avatar.png" />
+    <Content Include="Styles\images\hinh.jpg" />
+    <Content Include="Styles\images\icon_address.png" />
+    <Content Include="Styles\images\icon_black.png" />
+    <Content Include="Styles\images\icon_close.png" />
+    <Content Include="Styles\images\icon_date.png" />
+    <Content Include="Styles\images\icon_gio.png" />
+    <Content Include="Styles\images\icon_like.png" />
+    <Content Include="Styles\images\icon_sao.png" />
+    <Content Include="Styles\images\icon_tim.png" />
+    <Content Include="Styles\images\logo.png" />
+    <Content Include="Styles\images\logo_den.png" />
+    <Content Include="Styles\images\logo_trang.png" />
+    <Content Include="Styles\images\Logo_VIC.png" />
+    <Content Include="Styles\images\logo_đen.png" />
+    <Content Include="Styles\images\pic_home.jpg" />
+    <Content Include="Styles\images\Pic_M.jpg" />
+    <Content Include="Styles\images\profile.jpg" />
+    <Content Include="Styles\images\small.jpg" />
+    <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Styles\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Styles\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Styles\images\ui-icons_454545_256x240.png" />
+    <Content Include="Styles\images\ui-icons_888888_256x240.png" />
+    <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Styles\jquery-ui.css" />
+    <Content Include="Styles\menu.media-admin.css" />
+    <Content Include="Styles\orchard-media-admin.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Module.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.jQuery\Orchard.jQuery.csproj">
+      <Project>{8F116B06-1C0E-4E4C-9A0A-D2FAB851E768}</Project>
+      <Name>Orchard.jQuery</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Media\Orchard.Media.csproj">
+      <Project>{D9A7B330-CD22-4DA1-A95A-8DE1982AD8EB}</Project>
+      <Name>Orchard.Media</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Roles\Orchard.Roles.csproj">
+      <Project>{D10AD48F-407D-4DB5-A328-173EC7CB010F}</Project>
+      <Name>Orchard.Roles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Users\Orchard.Users.csproj">
+      <Project>{79AED36E-ABD0-4747-93D3-8722B042454B}</Project>
+      <Name>Orchard.Users</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIC.User\VIC.User.csproj">
+      <Project>{4FD296D3-8B4E-4C08-9A4E-8CF3CDCD729F}</Project>
+      <Name>VIC.User</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Drivers\VIC_AreaDriver.cs" />
+    <Compile Include="Drivers\VIC_ConcernDriver.cs" />
+    <Compile Include="Drivers\VIC_StoryDriver.cs" />
+    <Compile Include="Drivers\VIC_StoryConcernHomePageDriver.cs" />
+    <Compile Include="Drivers\VIC_UpdateStoryDriver.cs" />
+    <Compile Include="Drivers\VIC_ViewDriver.cs" />
+    <Compile Include="Handlers\VIC_AreaHandler.cs" />
+    <Compile Include="Handlers\VIC_ConcernHandler.cs" />
+    <Compile Include="Handlers\VIC_StoryHandler.cs" />
+    <Compile Include="Handlers\VIC_StoryConcernHomePageHandler.cs" />
+    <Compile Include="Handlers\VIC_UpdateStoryHandler.cs" />
+    <Compile Include="Handlers\VIC_ViewHandler.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\VIC_Area.cs" />
+    <Compile Include="Models\VIC_Concern.cs" />
+    <Compile Include="Models\VIC_Story.cs" />
+    <Compile Include="Models\VIC_StoryConcernHomepage.cs" />
+    <Compile Include="Models\VIC_UpdateStory.cs" />
+    <Compile Include="Models\VIC_View.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="ViewModels\VIC_StoryEditVM.cs" />
+    <Compile Include="ViewModels\VIC_StoryHomePageVM.cs" />
+    <Compile Include="ViewModels\VIC_StoryNewVM.cs" />
+    <Compile Include="ViewModels\VIC_StoryViewVM.cs" />
+    <Compile Include="ViewModels\VIC_StoryUpdateVM.cs" />
+    <Compile Include="ViewModels\VIC_StoryWarehouseVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="placement.info" />
+    <Content Include="Views\EditorTemplates\Parts\VIC_Story_Edit.cshtml" />
+    <Content Include="Views\Parts\VIC_Story.cshtml" />
+    <Content Include="Views\Story\CreateStory.cshtml" />
+    <Content Include="Views\Story\ViewStory.cshtml" />
+    <Content Include="Views\Story\EditStory.cshtml" />
+    <Content Include="Views\Story\UpdateStory.cshtml" />
+    <Content Include="Views\EditorTemplates\Parts\VIC_UpdateStory.cshtml" />
+    <Content Include="Views\Parts\VIC_UpdateStory.cshtml" />
+    <Content Include="Views\EditorTemplates\Parts\VIC_Concern.cshtml" />
+    <Content Include="Views\Parts\VIC_Concern.cshtml" />
+    <Content Include="Views\EditorTemplates\Parts\VIC_Area.cshtml" />
+    <Content Include="Views\Parts\VIC_Area.cshtml" />
+    <Content Include="Views\Story\CaptchPartialView.cshtml" />
+    <Content Include="Views\Story\StoryWarehouse.cshtml" />
+    <Content Include="Views\Story\Mod_ListStory.cshtml" />
+    <Content Include="Views\Story\Mystory.cshtml" />
+    <Content Include="Views\Story\CareStoryPartialView.cshtml" />
+    <Content Include="Views\Story\UpdateStoryPartial.cshtml" />
+    <Content Include="Views\Story\CommentStoryPartial.cshtml" />
+    <Content Include="Views\Story\MyStoryPartial.cshtml" />
+    <Content Include="Views\Story\ListStoryEndPartial.cshtml" />
+    <Content Include="Views\Story\StoryWareHousePartial.cshtml" />
+    <Content Include="Views\Story\Index.cshtml" />
+    <Content Include="Views\Home\HomePagePartial_1.cshtml" />
+    <Content Include="Views\Home\HomePagePartial_2.cshtml" />
+    <Content Include="Views\Home\HomePagePartial_3.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Admin_HomePage.cshtml" />
+    <Content Include="Views\Home\GetStory.cshtml" />
+    <Content Include="Views\Home\TopStory.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

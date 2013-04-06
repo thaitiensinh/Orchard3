@@ -1,0 +1,74 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+@using VIC_Story.Models;
+@using VIC_Story.ViewModels;
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <fieldset class="bulk-actions">
+        @Html.TextBoxFor(m => m.Options.Search, new { @class = "text" })
+        <label for="filterResults">@T("Filter:")</label>
+        <select id="filterResults" name="@Html.NameOf(m => m.Options.Filter)">
+            @Html.SelectOption(Model.Options.Filter, StorysFilter.Tat_ca, T("All Story").ToString())
+            @Html.SelectOption(Model.Options.Filter, StorysFilter.Dang_duoc_dang, T("Đang được đăng").ToString())
+            @Html.SelectOption(Model.Options.Filter, StorysFilter.Dang_cho_xet_duyet, T("Chờ xét duyệt").ToString())
+            @Html.SelectOption(Model.Options.Filter, StorysFilter.Da_ket_thuc, T("Đã kết thúc").ToString())
+            @Html.SelectOption(Model.Options.Filter, StorysFilter.Dang_bi_khoa, T("Đang bị khóa").ToString())
+        </select>
+        <label for="sortResults">@T("Sort by:")</label>
+        <select id="sortResults" name="@Html.NameOf(m => m.Options.Order)">
+            @Html.SelectOption(Model.Options.Order, StorysOrder.Ten_cau_chuyen, T("Tên câu chuyện").ToString())
+            @Html.SelectOption(Model.Options.Order, StorysOrder.Ngay_dang, T("Ngày đăng").ToString())
+        </select>
+        <button type="submit" name="submit.Filter" value="@T("Filter")">@T("Filter")</button>
+    </fieldset>
+    
+    
+    
+    foreach (var story in Model.Story)
+    {
+    <table class="items">
+        <tr>
+            <td>
+                <img width="108" height="80" title="" src="/OrchardLocal/Media/Default/image/@story.Picture" alt="" />
+            </td>
+            <td valign="middle" style="vertical-align: middle">
+                @Html.ActionLink(story.StoryName, "ViewStory", new
+       {
+           id = story.Id
+       })
+            </td>
+            @foreach (var user in Model.eListUser1)
+            {
+                if (user.UserPart_Id == story.ID_User)
+                {
+                <td style="vertical-align: middle; width: 100px; text-align: right;">
+                    @T("by: ") @user.FirstName @T(" ") @user.LastName |
+                </td>   
+                    break;
+                }
+            }
+            <td valign="middle" style="vertical-align: middle">
+                @story.Status |
+            </td>
+            <td valign="middle" style="vertical-align: middle">
+                @if (story.Status == "Chờ xác nhận")
+                {
+                    @Html.ActionLink(T("Xác nhận").ToString(), "Approve_Story", new { story.Id })
+                }
+                @if (story.Status == "Đang được đăng")
+                {
+                    @Html.ActionLink(T("Khóa câu chuyện").ToString(), "Lock_Story", new { story.Id })
+                }
+                @if (story.Status == "Đang bị khóa")
+                {
+                    @Html.ActionLink(T("Bỏ khóa").ToString(), "Unlock_Story", new { story.Id })
+                }
+                @if (story.Status == "Đã kết thúc")
+                {
+                    @Html.ActionLink(T("Xem").ToString(), "ViewStory", new { story.Id })
+                }
+            </td>
+        </tr>
+    </table>  
+    <hr />
+    }
+}

@@ -1,0 +1,47 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+@foreach (var story in Model.Story_User)
+{
+    <table style="width: 600px;">
+        <tr>
+            <td>
+                <div id="Mstory">
+                    <div style="width: 600px; margin: 15px 0px 15px">
+                        <hr />
+                    </div>
+                    <div style="width: 130px; float: left; padding-top: 10px;">
+                        <a href="~/">
+                            <img width="108" height="80" src="../../Media/Default/image/@story.Picture" /></a>
+                    </div>
+                    <div style="width: 470px; float: right">
+                        <h3>
+                            <span id="ax3">@Html.ActionLink(@story.StoryName, "ViewStory", new
+           {
+               id = story.Id
+           })</span></h3>
+                        @foreach (var user in Model.eListUser1)
+                        {
+                            if (user.UserPart_Id == story.ID_User)
+                            {
+                            <div>
+                                Viết bởi: <span id="ax3">@Html.ActionLink(@user.FirstName + @T(" ") + @user.LastName, "ViewUser", new
+           {
+               controller="Account", Area="VIC.User",
+               id = user.Id
+           })</span>
+                                <img src="../../Modules/VIC_Story/Styles/images/icon_tim.png" />@story.AmountCare
+                                &nbsp &nbsp &nbsp
+                                <img src="../../Modules/VIC_Story/Styles/images/icon_sao.png" />20 &nbsp &nbsp &nbsp
+                                &nbsp &nbsp &nbsp &nbsp &nbsp <span id="ax3">@Html.ActionLink("Xem", "ViewStory", new
+           {
+               id = story.Id
+           })</span>
+                            </div> 
+                                break;
+                            }
+                        }
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+}

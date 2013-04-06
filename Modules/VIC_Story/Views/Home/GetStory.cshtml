@@ -1,0 +1,10 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryHomePageVM
+@{
+     //name="Version"
+    <select id="Course">
+      @foreach (var item in Model.list)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+    </select>
+}

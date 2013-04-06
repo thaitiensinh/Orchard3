@@ -1,0 +1,87 @@
+2013-03-27 19:17:53,496 [7] NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT this_.Id as Id28_4_, this_.Number as Number28_4_, this_.Published as Published28_4_, this_.Latest as Latest28_4_, this_.Data as Data28_4_, this_.ContentItemRecord_id as ContentI6_28_4_, contentite1_.Id as Id27_0_, contentite1_.Data as Data27_0_, contentite1_.ContentType_id as ContentT3_27_0_, menuitempa5_.Id as Id42_1_, menuitempa5_.Url as Url42_1_, menupartre2_.Id as Id43_2_, menupartre2_.MenuText as MenuText43_2_, menupartre2_.MenuPosition as MenuPosi3_43_2_, menupartre2_.MenuId as MenuId43_2_, contenttyp7_.Id as Id29_3_, contenttyp7_.Name as Name29_3_ FROM Orchard_Framework_ContentItemVersionRecord this_ inner join Orchard_Framework_ContentItemRecord contentite1_ on this_.ContentItemRecord_id=contentite1_.Id left outer join Navigation_MenuItemPartRecord menuitempa5_ on contentite1_.Id=menuitempa5_.Id inner join Navigation_MenuPartRecord menupartre2_ on contentite1_.Id=menupartre2_.Id left outer join Orchard_Framework_ContentTypeRecord contenttyp7_ on contentite1_.ContentType_id=contenttyp7_.Id WHERE menupartre2_.MenuId = @p0 and this_.Published = @p1
+System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:658d4e1e-e5f2-4797-ba67-8c2946ef3042
+2013-03-27 19:17:53,571 [7] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:17:53,630 [7] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:17:53,635 [7] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:17:53,635 [7] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:17:53,637 [7] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:17:53,638 [7] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:17:53,640 [7] Orchard.Core.Navigation.Services.NavigationManager - Unexpected error while querying a menu provider. It was ignored. The menu provided by the provider may not be complete.
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ SELECT this_.Id as Id28_4_, this_.Number as Number28_4_, this_.Published as Published28_4_, this_.Latest as Latest28_4_, this_.Data as Data28_4_, this_.ContentItemRecord_id as ContentI6_28_4_, contentite1_.Id as Id27_0_, contentite1_.Data as Data27_0_, contentite1_.ContentType_id as ContentT3_27_0_, menuitempa5_.Id as Id42_1_, menuitempa5_.Url as Url42_1_, menupartre2_.Id as Id43_2_, menupartre2_.MenuText as MenuText43_2_, menupartre2_.MenuPosition as MenuPosi3_43_2_, menupartre2_.MenuId as MenuId43_2_, contenttyp7_.Id as Id29_3_, contenttyp7_.Name as Name29_3_ FROM Orchard_Framework_ContentItemVersionRecord this_ inner join Orchard_Framework_ContentItemRecord contentite1_ on this_.ContentItemRecord_id=contentite1_.Id left outer join Navigation_MenuItemPartRecord menuitempa5_ on contentite1_.Id=menuitempa5_.Id inner join Navigation_MenuPartRecord menupartre2_ on contentite1_.Id=menupartre2_.Id left outer join Orchard_Framework_ContentTypeRecord contenttyp7_ on contentite1_.ContentType_id=contenttyp7_.Id WHERE menupartre2_.MenuId = @p0 and this_.Published = @p1 ]
+  Name:cp0 - Value:11  Name:cp1 - Value:True
+[SQL: SELECT this_.Id as Id28_4_, this_.Number as Number28_4_, this_.Published as Published28_4_, this_.Latest as Latest28_4_, this_.Data as Data28_4_, this_.ContentItemRecord_id as ContentI6_28_4_, contentite1_.Id as Id27_0_, contentite1_.Data as Data27_0_, contentite1_.ContentType_id as ContentT3_27_0_, menuitempa5_.Id as Id42_1_, menuitempa5_.Url as Url42_1_, menupartre2_.Id as Id43_2_, menupartre2_.MenuText as MenuText43_2_, menupartre2_.MenuPosition as MenuPosi3_43_2_, menupartre2_.MenuId as MenuId43_2_, contenttyp7_.Id as Id29_3_, contenttyp7_.Name as Name29_3_ FROM Orchard_Framework_ContentItemVersionRecord this_ inner join Orchard_Framework_ContentItemRecord contentite1_ on this_.ContentItemRecord_id=contentite1_.Id left outer join Navigation_MenuItemPartRecord menuitempa5_ on contentite1_.Id=menuitempa5_.Id inner join Navigation_MenuPartRecord menupartre2_ on contentite1_.Id=menupartre2_.Id left outer join Orchard_Framework_ContentTypeRecord contenttyp7_ on contentite1_.ContentType_id=contenttyp7_.Id WHERE menupartre2_.MenuId = @p0 and this_.Published = @p1] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.List(ISessionImplementor session, QueryParameters queryParameters, ISet`1 querySpaces, IType[] resultTypes)
+   at NHibernate.Impl.SessionImpl.List(CriteriaImpl criteria, IList results)
+   at NHibernate.Impl.CriteriaImpl.List(IList results)
+   at NHibernate.Impl.CriteriaImpl.List[T]()
+   at Orchard.ContentManagement.DefaultContentQuery.Slice(Int32 skip, Int32 count) in c:\Users\sebros\My Projects\Orchard\src\Orchard\ContentManagement\DefaultContentQuery.cs:line 146
+   at Orchard.ContentManagement.DefaultContentQuery.ContentQuery`1.Orchard.ContentManagement.IContentQuery<T>.List() in c:\Users\sebros\My Projects\Orchard\src\Orchard\ContentManagement\DefaultContentQuery.cs:line 191
+   at Orchard.Core.Navigation.Services.DefaultMenuProvider.GetMenu(IContent menu, NavigationBuilder builder) in c:\Users\sebros\My Projects\Orchard\src\Orchard.Web\Core\Navigation\Services\DefaultMenuProvider.cs:line 0
+   at Orchard.Core.Navigation.Services.NavigationManager.<GetSources>d__17.MoveNext() in c:\Users\sebros\My Projects\Orchard\src\Orchard.Web\Core\Navigation\Services\NavigationManager.cs:line 158
+2013-03-27 19:17:53,811 [7] NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT tags0_.TagsPartRecord_id as TagsPart3_2_, tags0_.Id as Id2_, tags0_.Id as Id25_1_, tags0_.TagRecord_id as TagRecord2_25_1_, tags0_.TagsPartRecord_id as TagsPart3_25_1_, tagrecord1_.Id as Id26_0_, tagrecord1_.TagName as TagName26_0_ FROM Orchard_Tags_ContentTagRecord tags0_ left outer join Orchard_Tags_TagRecord tagrecord1_ on tags0_.TagRecord_id=tagrecord1_.Id WHERE tags0_.TagsPartRecord_id=@p0
+System.InvalidOperationException: ExecuteReader requires an open and available Connection. The connection's current state is closed.
+   at System.Data.SqlClient.SqlCommand.ValidateCommand(String method, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+2013-03-27 19:17:53,813 [7] NHibernate.Util.ADOExceptionReporter - ExecuteReader requires an open and available Connection. The connection's current state is closed.
+2013-03-27 19:17:53,817 [7] NHibernate.Util.ADOExceptionReporter - ExecuteReader requires an open and available Connection. The connection's current state is closed.
+2013-03-27 19:18:12,691 [12] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:18:12,691 [12] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:18:12,692 [12] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:18:12,692 [12] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:18:12,693 [12] NHibernate.Util.ADOExceptionReporter - Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2013-03-27 19:18:12,693 [12] NHibernate.Util.ADOExceptionReporter - The wait operation timed out
+2013-03-27 19:18:22,876 [10] NHibernate.Util.ADOExceptionReporter - A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The specified network name is no longer available.)
+2013-03-27 19:18:22,877 [10] NHibernate.Util.ADOExceptionReporter - The specified network name is no longer available
+2013-03-27 19:18:22,877 [10] NHibernate.Util.ADOExceptionReporter - A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The specified network name is no longer available.)
+2013-03-27 19:18:22,877 [10] NHiber

@@ -1,0 +1,80 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryUpdateVM
+@Html.ValidationSummary(T("Update Story creation was unsuccessful. Please correct the errors and try again.").ToString())
+@using (Html.BeginFormAntiForgeryPost())
+{ 
+    <div id="maincontainer">
+    <main>
+    <div><a href="../Viewstory/@Model.ID_Story"><img src="../../../Modules/VIC_Story/Styles/images/icon_black.png" /></a></div>
+    <div style="font-size: 22px;color:#99CC00">Cập nhật câu chuyện</div>
+    <br />
+     <div id="Updatestory">
+        <table style="width:600px; background-color: #F2F2F2;margin-bottom:15px">
+            <tr>
+                <td style="padding:10px 20px; font-size:16px">
+                Câu chuyện của bạn
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:0px 20px 30px">@Html.TextBoxFor(model => model.Title, new { style = "width: 540px ;height: 30px;" })</td>
+            </tr>
+        </table> 
+
+        <table style="width:600px; background-color: #F2F2F2;margin-bottom:15px">
+            <tr>
+                <td style="padding:10px 20px; font-size:16px">
+                Mô tả ngắn
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:0px 20px 30px">@Html.TextArea("Content", (string)Model.Content, new { @class = "html tinymce", style = "width: 560px ; height: 60px;" })</td>
+            </tr>
+        </table> 
+           
+          <table style="width:605px; background-color: #F2F2F2;margin-bottom:30px">
+            <colgroup>
+                <col width="130px" />
+                <col width="170px" />
+                <col width="130px" />
+                <col width="170px" />
+            </colgroup>
+            <tr>
+                <td style="padding:10px 20px; font-size:16px">
+                Thời gian
+                </td>
+                <td style="padding:20px;"> @Html.TextBoxFor(model => model.Date, new { id = "Date", style = "width: 100px;height: 30px;" })</td>
+                <td style="padding:10px 20px; font-size:16px">
+                @*Địa điểm*@
+                </td>
+                <td style="padding:20px">@*<input style="width: 150px;height: 30px;"/>*@</td>
+            </tr>
+         </table> 
+          @Html.HiddenFor(model => model.ID_Story)
+         <table style="width:605px;margin-bottom:30px">
+           <tr>
+            <td><button type="submit" style="float:right">Lưu thay đổi</button></td>
+           </tr>
+        </table> 
+      </div>
+    </main>
+</div>
+}
+@using (Script.Foot())
+{
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>    
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery.ui.datepicker.min.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery.ui.datepicker-vi.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/Orchard.jQuery/Scripts/jquery-ui-1.9.1.custom.js"
+        type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/TinyMce/Scripts/tiny_mce_src.js" type="text/javascript"></script>
+    <script src="/OrchardLocal/Modules/TinyMce/Scripts/orchard-tinymce.js" type="text/javascript"></script>
+    <link href="/OrchardLocal/Modules/Orchard.jQuery/Styles/jquery-ui.css" rel="stylesheet"
+        type="text/css" />
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Date").datepicker($.datepicker.regional['vi']);
+        });
+    </script>
+}

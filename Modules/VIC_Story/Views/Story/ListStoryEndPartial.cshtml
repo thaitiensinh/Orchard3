@@ -1,0 +1,66 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+<div id="maincontainer">
+    <main> 
+ <div id="ListStory" style="float:right">
+ <div style="width: 265px">
+ <a href="~/VIC_Story/Story/Createstory" style="text-align:center ; font-size: 16px;padding-top: 10px; padding-bottom: 10px; width:100%; background-color: rgb(238, 32, 32); display: inline-block;">Hành động ngay</a>
+    </div>
+            <table style="width:270px;">
+                 <tr>   
+                    <td>
+                    <input type="text" class="txtSearchStory" placeholder="Nhập từ khóa" style="font-size: 15px;" /><button >Tìm kiếm</button> </td>
+                 </tr>
+                 <tr>
+                    <td style="font-size: 18px;padding:10px 0px;">Đã kết thúc</td>
+                 </tr>
+                 <tr>
+                    <td>
+                   @foreach (var story in Model.Story)
+                   {
+                    <table style="width: 270px;">
+    <colgroup>
+        <col width="60px" />
+        <col width="210px" />
+    </colgroup>
+    <tr>
+        <td>
+            <a href="~/"><img src="../../Media/Default/image/@story.Picture" style="width: 64px; height: 36px" /></a>
+        </td>
+        <td style="padding-left:10px; font-size:15px">
+            <span id="ax3">@Html.ActionLink(@story.StoryName, "ViewStory", new
+                      {
+                          id = story.Id
+                      })</span>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        @foreach (var user in Model.eListUser1)
+        {
+            if (user.UserPart_Id == story.ID_User)
+            {
+        <td style="padding:5px 10px 10px; font-size:12px">Viết bởi
+          <u> <span id="ax4">@Html.ActionLink(@user.FirstName + @T(" ") + @user.LastName, "ViewUser", new
+           {
+               controller = "Account",
+               Area = "VIC.User",
+               id = user.Id
+           })</span></u>
+        </td>
+                break;
+            }
+        }
+    </tr>
+     <tr>
+        <td colspan='2'>
+            <hr />
+        </td>
+    </tr>
+</table>
+                   }
+                    </td>
+                 </tr>
+            </table> 
+        </div>
+    </main>
+</div>

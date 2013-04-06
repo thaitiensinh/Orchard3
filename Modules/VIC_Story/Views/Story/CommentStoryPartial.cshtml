@@ -1,0 +1,49 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryViewVM
+@foreach (var entry in Model.eCommentStory)
+{
+    var Content = new HtmlString(entry.Content.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    <table style="width: 620px; background-color: #F7F7F2;">
+        <colgroup>
+            <col width="auto" />
+            <col width="auto" />
+        </colgroup>
+        @foreach (var entry1 in Model.eListUser)
+        {
+            if (entry1.UserPart_Id == entry.ID_User)
+            {
+            <tr>
+                <td colspan='2'>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                 <span id="ax3">@Html.ActionLink(entry1.FirstName + " " + entry1.LastName, "", new { Controller = "Story", Area = "VIC_Story" })</span>
+                 @entry.Date
+                </td>
+            </tr>
+                break;
+            }
+            else
+            {
+            <tr>
+                <td colspan='2'>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                    <span id="ax3"> @Html.ActionLink(entry.NameAnonymous, "", "")</span>
+                    @entry.Date
+                    </td>          
+            </tr>
+            }
+
+        }
+        <tr>
+            <td colspan='2'>
+                @Content
+            </td>
+        </tr>
+    </table>
+}

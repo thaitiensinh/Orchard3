@@ -1,0 +1,9 @@
+﻿ @using CaptchaMvc.HtmlHelpers
+ @using Microsoft.Web.Helpers;
+ @{
+     ReCaptcha.PublicKey = "6LdeSd4SAAAAAAFKNJZUcKXYFOiamJmJg7_j2kbi";  
+}
+@using (Html.BeginForm())
+{
+    @ReCaptcha.GetHtml(theme: "red")
+}

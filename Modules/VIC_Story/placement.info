@@ -1,0 +1,10 @@
+﻿<Placement>
+    <Place Parts_VIC_Story_Edit="Content:3"/>
+    <Place Parts_VIC_Story="Content:3"/>
+  <Place Parts_VIC_UpdateStory_Edit="Content:3"/>
+  <Place Parts_VIC_UpdateStory="Content:3"/>
+  <Place Parts_VIC_View_Edit="Content:3"/>
+  <Place Parts_VIC_View="Content:3"/>
+  <Place Parts_Common_Owner_Edit="-"/>
+  <Place Parts_Common_Owner="-"/>
+</Placement>

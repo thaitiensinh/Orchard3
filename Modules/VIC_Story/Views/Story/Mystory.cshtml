@@ -1,0 +1,22 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+@using (Html.BeginFormAntiForgeryPost())
+{
+    if (@Model.IsUser)
+    {
+        
+        <div id="maincontainer">
+    <main> 
+        <div style="width:650px; float:left"><h2>Kho chuyện của tôi</h2>
+                   @Html.Partial("MyStoryPartial")
+        </div>
+        <div style="width:310;float:right">
+            <table style="width:310px">
+                <tr>
+                    <td>@Html.Partial("ListStoryEndPartial") </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</div>
+    }
+}

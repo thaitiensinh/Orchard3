@@ -1,0 +1,52 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+@using (Html.BeginFormAntiForgeryPost())
+{
+        
+        <div id="maincontainer">
+    <main> 
+        <div style="width:650px; float:left"><h2>Kho chuyện</h2>
+                   @Html.Partial("StoryWareHousePartial")
+        </div>
+        <div style="width:310;float:right">
+            <table style="width:310px">
+                <tr>
+                    <td>@Html.Partial("ListStoryEndPartial") </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</div>
+}
+
+
+@*@model VIC_Story.ViewModels.VIC_StoryWarehouseVM
+@using (Html.BeginFormAntiForgeryPost())
+{
+    foreach (var story in Model.Story)
+    {
+    <table class="items">
+        <tr>
+            <td>
+                <img width="108" height="80" title="" src="/OrchardLocal/Media/Default/image/@story.Picture" alt="" />
+            </td>
+            <td valign="middle" style="vertical-align: middle">
+                @Html.ActionLink(story.StoryName, "ViewStory", new
+       {
+           id = story.Id
+       })
+            </td>
+            @foreach (var user in Model.eListUser1)
+            {
+                if (user.UserPart_Id == story.ID_User)
+                {
+                <td style="vertical-align: middle; width: 100px; text-align: right;">
+                    @T("by: ") @user.FirstName @T(" ") @user.LastName
+                </td>   
+                    break;
+                }
+            }
+        </tr>
+    </table>  
+    <hr />
+    }
+}*@

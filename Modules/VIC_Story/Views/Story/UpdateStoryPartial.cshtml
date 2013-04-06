@@ -1,0 +1,28 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryViewVM
+@foreach (var entry in Model.eUpdateStorys)
+{
+    var Content = new HtmlString(entry.Content.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    <table style="border: thin groove #CCCCCC; color: #808080; width: 610px;">
+        <colgroup>
+            <col width="430px" />
+            <col width="180px" />
+        </colgroup>
+        <tr>
+            <td style="font-size: 18px">@entry.Title
+            </td>
+            <td style="font-size: 16px">
+                <img src="../../../Modules/VIC_Story/Styles/images/icon_date.png" />@entry.Date.Value.ToShortDateString()
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                @Content
+            </td>
+        </tr>
+    </table>
+}

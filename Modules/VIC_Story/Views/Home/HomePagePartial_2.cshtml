@@ -1,0 +1,292 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryHomePageVM
+           @{
+               bool t1 = false, t2 = false ;
+           }
+
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <div>
+    <table style="width: 960px; color: #808080; font-family: 'Segoe UI'; margin: 20px 10px"
+        rules="cols">
+        <colgroup>
+            <col width="700px;" />
+            <col width="250px" />
+        </colgroup>
+        <tr>
+            <td id="my-tab-content" class="tab-content">
+                @foreach (var c in @Model.eListConcern)
+                    {
+                        if (t2 == false)
+                        {
+                    <table class="tab-pane active" id="@c.Id">
+                        <colgroup>
+                            <col width="220px;" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="230px" />
+                        </colgroup>
+                        <tr>
+                            <td colspan='3' style="font-size: 20px; padding-bottom: 10px">
+                                Cậu chuyện hay: <span id="ax">@Html.ActionLink(@c.ConcernName, " ", " ")</span>
+                            </td>
+                            
+                            <td style="float: right; padding: 0px 10px">
+                                <span id="ax1">@Html.ActionLink("Xem tất cả 10 câu chuyện >>", " ", " ")</span>
+                            </td>
+                        </tr>
+                        @foreach (var i in @Model.eListStory)
+                        {
+                            if (i.Concern == c.Id)
+                            {
+                            <tr>
+                                <td rowspan='3'>
+                                    <img src="~/media/Default/image/@i.Picture" style="width: 200px; height: 180px" />
+                                </td>
+                                <td colspan='3'>
+                                    <table>
+                                        <colgroup>
+                                            <col width="44px" />
+                                            <col width="386" />
+                                        </colgroup>
+                                        <tr>
+                                            <td rowspan='2'>
+                                                @foreach(var i2 in @Model.eListUser)
+                                                {
+                                                    if(i.ID_User==i2.UserPart_Id)
+                                                    {
+                                                        <img src="~/media/Default/image/@i2.Avatar" style="width: 44px; height: 44px" />
+                                                     break;
+                                                    }
+                                                   
+                                                }
+                                            </td>
+                                            <td style="color: #99CC00; font-size: 25px;">
+                                                @i.StoryName
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;">
+                                               Viết bởi  <span id="ax4">
+                                            @foreach(var i2 in @Model.eListUser)
+                                                {
+                                                
+                                                    if(i.ID_User==i2.UserPart_Id)
+                                                    {
+                                                        @Html.ActionLink(i2.FirstName + " " + i2.LastName, "ViewUser", new { Controller = "Account", Area = "VIC.User", id = i2.Id }) 
+                                                break;
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='3'>
+                                    @i.Description
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='3'>
+                                    <table>
+                                        <col width="100px" />
+                                        <col width="100px" />
+                                        <col width="230px" />
+                                        <tr>
+                                            <td style="font-size: 16px; color: #8CBB00">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_tim.png" />@i.AmountCare
+                                            </td>
+                                            <td style="font-size: 16px; color: Red">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_sao.png" />20
+                                            </td>
+                                            <td style="font-size: 16px">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_gio.png" />@i.StartDate.Value.ToShortDateString()
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 13px; color: #8CBB00">
+                                                người quan tâm
+                                            </td>
+                                            <td style="font-size: 13px; color: Red">
+                                                người hành động
+                                            </td>
+                                            <td style="font-size: 13px">
+                                                Thời gian thực hiện
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            }
+                            }
+                    </table>
+                            t2 = true;
+                        }
+                        else
+                        {
+                    <table class="tab-pane" id="@c.Id">
+                        <colgroup>
+                            <col width="220px;" />
+                            <col width="100px" />
+                            <col width="100px" />
+                            <col width="230px" />
+                        </colgroup>
+                        <tr>
+                            <td colspan='3' style="font-size: 20px; padding-bottom: 10px">
+                                Cậu chuyện hay: <span id="ax">@Html.ActionLink(@c.ConcernName, " ", " ")</span>
+                            </td>
+                            <td style="float: right; padding: 0px 10px">
+                                <span id="ax1">@Html.ActionLink("Xem tất cả 10 câu chuyện >>", " ", " ")</span>
+                            </td>
+                        </tr>
+                         @foreach (var i in @Model.eListStory)
+                        {
+                            if (i.Concern == c.Id)
+                            {
+                            <tr>
+                                <td rowspan='3'>
+                                    <img src="~/media/Default/image/@i.Picture" style="width: 200px; height: 180px" />
+                                </td>
+                                <td colspan='3'>
+                                    <table>
+                                        <colgroup>
+                                            <col width="44px" />
+                                            <col width="386" />
+                                        </colgroup>
+                                        <tr>
+                                            <td rowspan='2'>
+                                                @*<img src="../../Modules/VIC_Story/Styles/images/44x44.jpg" />*@
+                                                @foreach(var i2 in @Model.eListUser)
+                                                {
+                                                    if(i.ID_User==i2.UserPart_Id)
+                                                    {
+                                                        <img src="~/media/Default/image/@i2.Avatar" style="width: 44px; height: 44px" />
+                                                     break;
+                                                    }
+                                                   
+                                                }
+                                            </td>
+                                            <td style="color: #99CC00; font-size: 25px;">
+                                                @i.StoryName
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 16px;">
+                                            Viết bởi  <span id="ax4">
+                                            @foreach(var i2 in @Model.eListUser)
+                                                {
+                                                
+                                                    if(i.ID_User==i2.UserPart_Id)
+                                                    {
+                                                        @Html.ActionLink(i2.FirstName + " " + i2.LastName, "ViewUser", new { Controller = "Account", Area = "VIC.User", id = i2.Id }) 
+                                                break;
+                                                    }
+                                                }
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='3'>
+                                    @i.Description
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='3'>
+                                    <table>
+                                        <col width="100px" />
+                                        <col width="100px" />
+                                        <col width="230px" />
+                                        <tr>
+                                            <td style="font-size: 16px; color: #8CBB00">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_tim.png" />@i.AmountCare
+                                            </td>
+                                            <td style="font-size: 16px; color: Red">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_sao.png" />20
+                                            </td>
+                                            <td style="font-size: 16px">
+                                                <img src="../../Modules/VIC_Story/Styles/images/icon_gio.png" />@i.StartDate.Value.ToShortDateString()
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 13px; color: #8CBB00">
+                                                người quan tâm
+                                            </td>
+                                            <td style="font-size: 13px; color: Red">
+                                                người hành động
+                                            </td>
+                                            <td style="font-size: 13px">
+                                                Thời gian thực hiện
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            }
+                            }
+                    </table>
+                        }
+                    }
+            </td>
+            <td>
+                <table style="margin: 20px">
+                    <tr>
+                        <td>
+                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                @foreach (var i in @Model.eListConcern)
+                                {
+                       
+                        
+                                
+@*<span id="ax6">@Html.ActionLink(@i.ConcernName, "Index", new { id = @i.Id.ToString() })</span> @*<span id="ax6">*@
+@*<li class="active"><a href="#@i.Id" data-toggle="tab">@i.ConcernName</a></li>*@
+                                    if (t1 == false)
+                                    {
+                                    <li class="active"><a href="#@i.Id" data-toggle="tab">@i.ConcernName</a></li>
+                                        t1 = true;
+                                    }
+                                    else
+                                    {
+                                    <li><a href="#@i.Id" data-toggle="tab">@i.ConcernName</a></li>
+                                    }
+@*<li><a href="#yellow" data-toggle="tab">Yellow</a></li>
+                                    <li><a href="#green" data-toggle="tab">Green</a></li>
+                                    <li><a href="#blue" data-toggle="tab">Blue</a></li>*@
+                             
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    @Html.AntiForgeryTokenOrchard()
+    </div>
+}
+@using (Script.Foot())
+{
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script> 
+}
+@*@using (Script.Foot())
+{      
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("a").click(function () {
+                var id = $(this).attr("id");
+                $("#story").load("test", { id: id }, function (data) {
+                    $(this).html(data);
+                });
+            });
+        });
+    
+    </script>
+   
+}*@

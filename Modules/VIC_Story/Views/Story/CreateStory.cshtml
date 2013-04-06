@@ -1,0 +1,231 @@
+﻿@model VIC_Story.ViewModels.VIC_StoryNewVM
+@Html.ValidationSummary(T("Story creation was unsuccessful. Please correct the errors and try again.").ToString())
+@using (Html.BeginForm("CreateStory", "Story", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="maincontainer">
+        <main>
+        <table id="Table1" border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <td style = "width: 30px" ><a id="myHeader1" href="javascript:toggle2('myContent1','myHeader1');javascript:showonlyone('myContent1')" >Hướng Dẫn</a></td>
+                <td style = "width: 60px"><a id="myHeader2" href="javascript:toggle2('myContent2','myHeader2');javascript:showonlyone('myContent2')" >Thông Tin Cơ Bản</a></td>
+                <td style = "width: 60px"><a id="myHeader3" href="javascript:toggle2('myContent3','myHeader3');javascript:showonlyone('myContent3')" >Chi tiết</a></td>
+                <td style="width: 30px; "><a id="myHeader4" href="javascript:toggle2('myContent4','myHeader4');javascript:showonlyone('myContent4')" >Tài khoản</a></td>
+                <td style="width: 30px; "><a id="myHeader4" href="javascript:toggle2('myContent4','myHeader4');javascript:showonlyone('myContent4')" >Xem Trước</a></td>
+                <td style="width: 30px; background-color: #99FF33; color:White" ><button class="primaryAction" type="submit" id="btn">@T("Tạo câu chuyện")</button></td>
+            </tr>
+        </table>
+         <div class="myContent" id="myContent1" style="display: block"></div>
+         <div class="myContent" id="myContent2" style="display: none" >
+                @*table UpImage*@
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color: #5FB404; margin: 5px 20px 5px 20 px; padding: 30px; width:100px; font-size: 20px">
+                        Hình ảnh
+                    </td>
+                    <td colspan='5'>                    
+                         <div style="margin:5px 10px 5px 10px; white-space : 400px">
+                            <input id="MediaItemPath" name="MediaItemPath" type="file" value=@T("Browse") size="64" />
+                            @*<span class="hint">@T("Bạn có thể upload file hình với đuôi mở rộng: .jpg, .gif, .bmp.")</span>*@
+                            <input type="hidden" id="FolderName" name="FolderName" value= @Model.FolderName />
+                            <input type="hidden" id="MediaPath" name="MediaPath" value= @Model.MediaPath />
+                        </div> 
+                     </td>
+                </tr>
+            </table>
+            @*Table MyStory*@
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" >Câu chuyện của tôi</td>
+                </tr>
+                <tr>
+                    <td colspan='8'>                                     
+                    @Html.TextBoxFor(model => model.StoryName, new { style = "width: 500px; margin-left: 10px;" })
+                         @*<textarea id="TextAriaDetial1"></textarea> *@
+                      </td>
+                </tr>
+                <tr>
+                    <td style="color:Black; padding-left: 10px; font-size: 15px; margin: 0 0 10px 0" >Tiêu đề cho câu chuyện, câu chuyện được diễn tả ngắn gọn, rõ ràng, dễ nhớ.</td>
+                </tr>
+            </table>
+
+            @*Table Tab*@
+
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" colspan='8'> Chủ đề bạn quan tâm</td>
+                    <td>
+                        <p>
+                            @*Chuyên đề:<BR>*@
+                            @Html.DropDownList("Concern", string.Empty)
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            @*Description *@
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" >Mô Tả ngắn</td>
+                </tr>
+                <tr>
+                    <td colspan='8'>      
+                    @Html.TextAreaFor(model => model.Description, new { style = "width: 500px; height: 100px" })              
+                         @*<textarea id="TextAriaDetial1"></textarea> *@
+                     </td>
+                </tr>
+                <tr>
+                    <td style="color:Black; padding-left: 10px; font-size: 15px; margin: 0 0 10px 0" >Nếu mô tả thông điệp câu chuyện của bạn trong vài dòng, bạn sẽ viết gì? .</td>
+                </tr>
+            </table>
+
+            @*Table Aria*@
+
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" colspan='8'> Khu vực thực hiện</td>
+                    <td>
+                        <p style="margin-left: 50px">
+                            @*Chuyên đề:<BR>*@
+                             @Html.DropDownList("Area", string.Empty)
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            @*Table Time*@
+
+            <table id="TableBasic" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" > Thời gian bắt đầu</td>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" > Thời gian kết thúc</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin-left: 10px">
+                        @Html.TextBoxFor(model => model.StartDate, new { id = "StartDate" })
+                            @*<TEXTAREA NAME="NgayBatDau" COLS="40" ROWS="2"></TEXTAREA>*@
+                        </p>
+                    </td>
+                    <td>
+                        <p style="margin-left: 10px">
+                        @Html.TextBoxFor(model => model.EndDate, new { id = "EndDate" })
+                           
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+       </div>
+         <div class="myContent" id="myContent3" style="display: none" >
+            <table id="Table2" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" colspan='8'> Vì sao quan trọng với bạn?</td>
+                </tr>
+                <tr>
+                    <td colspan='8' style="padding-left: 10px;">    
+                    @Html.TextArea("WhyImp", (string)Model.WhyImp, new { @class = "html tinymce", Style = "height:200px" })            
+                     </td>
+                </tr>
+            </table>
+
+            <table id="Table2" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" colspan='8'> Mô tả chi tiết bạn giải quyết vấn đề</td>
+                </tr>
+                <tr>
+                    <td colspan='8' style="padding-left: 10px;">                    
+                         @Html.TextArea("Solve", (string)Model.Solve, new { @class = "html tinymce", Style = "height:200px" })
+                     </td>
+                </tr>
+            </table>
+            
+                <div>
+            <table id="Table2" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="color:#5FB404; padding-left: 10px; font-size: 20px" colspan='8'> Những thuận lợi và khó khăn</td>
+                </tr>
+                <tr>
+                    <td colspan='8' style="padding-left: 10px;">                    
+                        @Html.TextArea("Advance", (string)Model.Advance, new { @class = "html tinymce", Style = "height:200px" })
+                     </td>
+                </tr>
+                <tr>
+                    <td style="color:Black; padding-left: 10px; font-size: 12px" colspan='8'> Nêu ra những khó khăn, những nhu cầu cần cộng đồng tham gia để hiện thực hành động của bạn</td>
+                </tr>
+            </table>
+            </div>
+            @Html.AntiForgeryTokenOrchard()  
+        </div>
+        <div class="myContent" id="myContent4" style="display: block"></div>
+        <div class="myContent" id="myContent4" style="display: block"></div>         
+        </main>
+    </div>
+}
+@using (Script.Foot())
+{
+    Script.Require("jQuery");
+    Style.Include("jquery-ui.css");
+    Script.Include("jquery.ui.datepicker.min.js");
+    Script.Include("jquery.ui.datepicker-vi.js");
+    Script.Require("TinyMce");
+    Script.Require("OrchardTinyMce");
+    <script type="text/javascript">
+        $(function () {
+            $("#StartDate").datepicker($.datepicker.regional['vi']);
+            $("#EndDate").datepicker($.datepicker.regional['vi']);
+        });
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+    $(function () {
+        $('#MediaItemPath').change(function () {
+            var $in = $(this);
+            var allowedExtensions = ' @Model.AllowedExtensions ';
+            var filename = $in.val();
+          var ext = filename.slice(filename.lastIndexOf(".")).toLowerCase();
+            var allowed = allowedExtensions == '  ' || allowedExtensions.indexOf(ext) != -1;
+
+            if(!allowed) {
+                $('#messages>div').append($('<div class="message message-Error">@T("Cant upload file. Supported file types are {0}.", Model.AllowedExtensions).Text</div>));
+                return false;
+            }
+        });
+    })
+//]]>
+    </script>
+    <script language="javascript">
+        function toggle2(showHideDiv, switchTextDiv) {
+            var ele = document.getElementById(showHideDiv);
+            var text = document.getElementById(switchTextDiv);
+            if (ele.style.display == "block") {
+                ele.style.display = "none";
+            }
+            else {
+                ele.style.display = "block";
+            }
+        }
+//        function toggle3(contentDiv, controlDiv) {
+//            if (contentDiv.constructor == Array) {
+//                for (i = 0; i < contentDiv.length; i++) {
+//                    toggle2(contentDiv[i], controlDiv[i]);
+//                }
+//            }
+//            else {
+//                toggle2(contentDiv, controlDiv);
+//            }
+//        }
+        function showonlyone(thechosenone) {
+            var myContent = document.getElementsByTagName("div");
+            for (var x = 0; x < myContent.length; x++) {
+                name = myContent[x].getAttribute("class");
+                if (name == 'myContent') {
+                    if (myContent[x].id == thechosenone) {
+                        myContent[x].style.display = 'block';
+                    }
+                    else {
+                        myContent[x].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+}
